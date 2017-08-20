@@ -21,7 +21,7 @@ def execute_function(query):
 
 def most_popular_three_articles():
 
-    """Return All the most popular three articles of all time."""
+    """Return All the most popular article authors of all time."""
     query = '''select title, views as total_views from
                articles inner join popular_articles on
                articles.slug = popular_articles.new_path
@@ -42,6 +42,18 @@ def most_popular_article_authors():
     print('\nThe most popular article authors of all time: \n')
     for article in most_popular_article_authors_query:
         print('\t' + str(article[0]) + ' ---- ' + str(article[1]) + ' views')
+
+# Question 3:
+
+
+def percentage_error_requests():
+
+    """Return All the days that more than 1% of requests lead to errors."""
+    query = '''select to_char(time, 'dd Month YYYY') as date, round(cast(error_percentages as numeric), 2) from (select * from errors where error_percentages = (select max(error_percentages) from errors)) as foo;'''
+    percentage_error_requests_query = execute_function(query)
+    print('\nDay(s) on which more than 1% of requests lead to errors: \n')
+    for article in percentage_error_requests_query:
+        print('\t' + str(article[0]) + ' ---- ' + str(article[1]) + ' % errors')
 
 def print_seperator():
 
