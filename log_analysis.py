@@ -31,6 +31,18 @@ def most_popular_three_articles():
     for article in most_popular_three_articles_query:
         print('\t' + str(article[0]) + ' ---- ' + str(article[1]) + ' views')
 
+# Question 2:
+
+
+def most_popular_article_authors():
+
+    """Return All the most popular three articles of all time."""
+    query = '''select name, sum(total_views) from authors inner join popular_authors on authors.id = popular_authors.author group by authors.id'''
+    most_popular_article_authors_query = execute_function(query)
+    print('\nThe most popular article authors of all time: \n')
+    for article in most_popular_article_authors_query:
+        print('\t' + str(article[0]) + ' ---- ' + str(article[1]) + ' views')
+
 def print_seperator():
 
     """Prints an equal to sign as a seperator. For easy to ready the output"""
