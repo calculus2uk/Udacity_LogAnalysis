@@ -37,7 +37,9 @@ def most_popular_three_articles():
 def most_popular_article_authors():
 
     """Return All the most popular three articles of all time."""
-    query = '''select name, sum(total_views) from authors inner join popular_authors on authors.id = popular_authors.author group by authors.id'''
+    query = '''select name, sum(total_views) from authors inner
+               join popular_authors on authors.id = popular_authors.author
+               group by authors.id'''
     most_popular_article_authors_query = execute_function(query)
     print('\nThe most popular article authors of all time: \n')
     for article in most_popular_article_authors_query:
@@ -49,11 +51,16 @@ def most_popular_article_authors():
 def percentage_error_requests():
 
     """Return All the days that more than 1% of requests lead to errors."""
-    query = '''select to_char(time, 'dd Month YYYY') as date, round(cast(error_percentages as numeric), 2) from (select * from errors where error_percentages = (select max(error_percentages) from errors)) as foo;'''
+    query = '''select to_char(time, 'dd Month YYYY') as date,
+               round(cast(error_percentages as numeric), 2)
+               from (select * from errors where
+               error_percentages = (select max(error_percentages) from errors))
+               as foo;'''
     percentage_error_requests_query = execute_function(query)
     print('\nDay(s) on which more than 1% of requests lead to errors: \n')
     for article in percentage_error_requests_query:
-        print('\t' + str(article[0]) + ' ---- ' + str(article[1]) + ' % errors')
+        print('\t' + str(article[0]) + ' ----' + str(article[1]) + ' % errors')
+
 
 def print_seperator():
 
