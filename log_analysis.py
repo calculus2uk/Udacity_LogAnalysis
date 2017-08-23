@@ -54,12 +54,12 @@ def percentage_error_requests():
     query = '''select to_char(time, 'dd Month YYYY') as date,
                round(cast(error_percentages as numeric), 2)
                from (select * from errors where
-               error_percentages = (select max(error_percentages) from errors))
+               error_percentages > 1)
                as foo;'''
     percentage_error_requests_query = execute_function(query)
     print('\nDay(s) on which more than 1% of requests lead to errors: \n')
-    for article in percentage_error_requests_query:
-        print('\t' + str(article[0]) + ' ----' + str(article[1]) + ' % errors')
+    for days in percentage_error_requests_query:
+        print('\t' + str(days[0]) + ' ----' + str(days[1]) + ' % errors')
 
 
 def print_seperator():
