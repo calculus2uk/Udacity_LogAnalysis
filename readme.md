@@ -1,6 +1,6 @@
 
 # Log Analysis Project
-This project aims to display a list of my favourite movies of all time
+This project aims to stretch the SQL database skills. Practicing interacting with a live database both from the command line and from code.
 
 ## Table of Content
 The following files can be found in the project.
