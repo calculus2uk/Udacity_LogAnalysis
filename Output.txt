@@ -1,4 +1,4 @@
-vagrant@vagrant:/vagrant/log_Analysis$ python log_analysis.py
+vagrant@vagrant:/vagrant/log/log_analysis$ python log_analysis.py
 
 ================================================================================
 
@@ -24,8 +24,8 @@ The most popular article authors of all time:
 
 Day(s) on which more than 1% of requests lead to errors:
 
-        17 July      2016 ---- 2.26 % errors
+        17 July      2016 ----2.26 % errors
 
 ================================================================================
 
-vagrant@vagrant:/vagrant/log_Analysis$
+vagrant@vagrant:/vagrant/log/log_analysis$
